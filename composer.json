@@ -1,0 +1,22 @@
+{
+    "name": "custom/badge",
+    "description": "A plugin for manage WooCommerce badge",
+    "type": "wordpress-plugin",
+    "license": "GPLv2 or later",
+    "authors": [
+        {
+            "name": "Osman Haider",
+            "email": "osmanhaider159@gmail.com"
+        }
+    ],
+    "autoload": {
+		"psr-4": {
+			"CPBW_PRO\\Backend\\": "backend/",
+			"CPBW_PRO\\Frontend\\": "frontend/",
+			"CPBW_PRO\\Rest\\": "rest/",
+            "CPBW_PRO\\App\\": "app/"
+		}
+	},
+    "minimum-stability": "dev",
+    "require": {}
+}

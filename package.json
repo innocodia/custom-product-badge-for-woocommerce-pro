@@ -1,0 +1,12 @@
+{
+    "name": "store-manager",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "zip": "zip -r custom-product-badge-for-woocommerce-pro.zip . -x \"node_modules/*\" -x \"*.zip\" -x \"*.git/*\" -x \"*.DS_Store\" -x \"*.gitignore\" -x \"*badgeApiDocumentation.txt\" -x \"*settingsApiDocumentation.txt\""
+    },
+    "author": "",
+    "license": "ISC",
+    "description": ""
+  }
+  

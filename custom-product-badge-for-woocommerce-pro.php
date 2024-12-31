@@ -28,6 +28,43 @@ if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+if ( ! function_exists( 'cpbfw_fs' ) ) {
+    // Create a helper function for easy SDK access.
+    function cpbfw_fs() {
+        global $cpbfw_fs;
+
+        if ( ! isset( $cpbfw_fs ) ) {
+            // Include Freemius SDK.
+            require_once dirname(__FILE__) . '/license/start.php';
+
+            $cpbfw_fs = fs_dynamic_init( array(
+                'id'                  => '17479',
+                'slug'                => 'custom-product-badge-for-woocommerce',
+                'type'                => 'plugin',
+                'public_key'          => 'pk_20bd5bc53b118e87e01707d87be49',
+                'is_premium'          => true,
+                // If your plugin is a serviceware, set this option to false.
+                'has_premium_version' => true,
+                'has_addons'          => false,
+                'has_paid_plans'      => true,
+                'menu'                => array(
+                    'slug'           => 'cpbw-manage-license',
+                    'parent'         => array(
+                        'slug' => 'cpbw',
+                    ),
+                ),
+            ) );
+        }
+
+        return $cpbfw_fs;
+    }
+
+    // Init Freemius.
+    cpbfw_fs();
+    // Signal that SDK was initiated.
+    do_action( 'cpbfw_fs_loaded' );
+}
+
 /**
  * Plugin main class
  */
@@ -90,6 +127,10 @@ final class CPBW_Pro_Main {
     public function init_plugin()
     {
         new CPBW_PRO\App\Badge();
+
+        if (is_admin()) {
+            new CPBW_PRO\Backend\Menu();
+        }
     }
 
     /**

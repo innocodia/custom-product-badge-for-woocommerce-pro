@@ -41,9 +41,6 @@ class DynamicBadge {
         // Check if sale price is valid to prevent unexpected results
         if ($price > 0 && $sale_price > 0) {
             $discount = $price - $sale_price;
-            if ($discount == 0) {
-                return false;
-            }
             return (float) $discount;
         }
     
@@ -58,9 +55,6 @@ class DynamicBadge {
      */
     public static function regular_price( $product ) {
         $value = (float) $product->get_price();
-        if ($value == 0) {
-            return false;
-        }
         return $value;
     }
 
@@ -72,9 +66,6 @@ class DynamicBadge {
      */
     public static function sale_price( $product ) {
         $value = (float) $product->get_sale_price();
-        if ($value == 0) {
-            return false;
-        }
         return $value;
     }
 }

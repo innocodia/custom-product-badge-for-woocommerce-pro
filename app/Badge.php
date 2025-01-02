@@ -41,21 +41,33 @@ class Badge {
             switch ($placeholder) {
                 case 'discount_percentage':
                     $value = DynamicBadge::precent_calculation($product);
+                    if ($value == 0) {
+                        return false;
+                    }
                     $badge_style = str_replace('{{discount_percentage}}', $value, $badge_style);
                     break;
     
                 case 'discount_value':
                     $value = DynamicBadge::discount_value_calculation($product);
+                    if ($value == 0) {
+                        return false;
+                    }
                     $badge_style = str_replace('{{discount_value}}', $value, $badge_style);
                     break;
     
                 case 'regular_price':
-                    $value = DynamicBadge::regular_price($product);
+                    $value = (float) $product->get_price();
+                    if ($value == 0) {
+                        return false;
+                    }
                     $badge_style = str_replace('{{regular_price}}', $value, $badge_style);
                     break;
     
                 case 'sale_price':
                     $value = DynamicBadge::sale_price($product);
+                    if ($value == 0) {
+                        return false;
+                    }
                     $badge_style = str_replace('{{sale_price}}', $value, $badge_style);
                     break;
     

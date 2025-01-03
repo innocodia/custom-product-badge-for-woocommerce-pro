@@ -40,11 +40,11 @@ if ( ! function_exists( 'cpbfw_fs' ) ) {
             $cpbfw_fs = fs_dynamic_init( array(
                 'id'                  => '17479',
                 'slug'                => 'custom-product-badge-for-woocommerce',
+                'premium_slug'        => 'custom-product-badge-for-woocommerce-pro',
                 'type'                => 'plugin',
                 'public_key'          => 'pk_20bd5bc53b118e87e01707d87be49',
                 'is_premium'          => true,
-                // If your plugin is a serviceware, set this option to false.
-                'has_premium_version' => true,
+                'is_premium_only'     => true,
                 'has_addons'          => false,
                 'has_paid_plans'      => true,
                 'menu'                => array(
